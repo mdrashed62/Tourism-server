@@ -30,6 +30,7 @@ async function run() {
     // await client.connect();
 
     const spotCollection = client.db("addSpotDB").collection('addSpot')
+    const countryCollection = client.db("addSpotDB").collection('CountryData')
     // const haiku = database.collection("haiku");
 
     app.get('/touristSpots', async (req, res) => {
@@ -37,6 +38,7 @@ async function run() {
       const result = await cursor.toArray()
       res.send(result)
     })
+  
 
     app.post('/touristSpots',async (req, res) => {
       const addSpot = req.body;
