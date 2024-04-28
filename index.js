@@ -40,6 +40,12 @@ async function run() {
     })
   
 
+    app.get('/countryData', async (req, res) => {
+      const cursor = countryCollection.find()
+      const result = await cursor.toArray()
+      res.send(result)
+    })
+
     app.post('/touristSpots',async (req, res) => {
       const addSpot = req.body;
       // const result = await addSpotCollection.insertOne(addSpot)
