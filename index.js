@@ -72,8 +72,6 @@ app.get('/', (req, res) => {
 })
 
 
-
-
 app.listen(port, () => {
     console.log(`My tourist server is running on port: ${port}`)
 })
