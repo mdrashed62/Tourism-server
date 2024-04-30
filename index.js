@@ -68,6 +68,23 @@ async function run() {
       res.send(result)
     })
 
+
+    app.get('/country/:country_name?', async (req, res) => {
+      const country_name = req.params.country_name;
+      let result;
+    
+      if (country_name) {
+        // Query for tourist spots related to a specific country
+        result = await spotCollection.find({ countryName: country_name }).toArray();
+      } else {
+        // Query for all tourist spots
+        result = await spotCollection.find().toArray();
+      }
+    
+      res.send(result);
+    });
+    
+
     //update
     app.put('/touristSpots/:id', async (req, res) => {
       const id = req.params.id;
@@ -90,6 +107,8 @@ async function run() {
       const result = await spotCollection.updateOne(filter, spot, options);
       res.send(result)
     })
+
+
 
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
